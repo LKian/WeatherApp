@@ -2,9 +2,6 @@ console.log(
   "What's the point of small talk if you can't talk about the weather?"
 );
 
-// const apiKey = "1ae8c9811bb69f7be6fcc44e1975262c";
-// http://api.openweathermap.org/data/2.5/weather?q=Philadelphia&appid="
-
 window.addEventListener("load", () => {
   const apiKey = "1ae8c9811bb69f7be6fcc44e1975262c";
   let long;
@@ -13,7 +10,6 @@ window.addEventListener("load", () => {
   let weatherTemperature = document.querySelector(".weather-temperature");
   let weatherCity = document.querySelector(".weather-city p");
   let weatherDescription = document.querySelector(".weather-description p");
-  let weatherUnits = document.querySelector(".units h2");
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
