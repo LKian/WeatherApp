@@ -1,0 +1,46 @@
+* {
+  box-sizing: border-box;
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.weather-info-container {
+  border: 1px solid #900;
+  padding: 25px;
+  width: 400px;
+}
+
+.weather-info-container:hover {
+  cursor: pointer;
+}
+
+.header-container .header-title {
+  text-align: center;
+}
+
+.weather-info-container {
+  text-align: center;
+}
+
+.weather-description,
+.weather-city {
+  text-transform: capitalize;
+}
+
+.weather-temperature-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.weather-temperature-container span {
+  margin-left: 10px;
+}
