@@ -10,6 +10,8 @@ window.addEventListener("load", () => {
   let weatherTemperature = document.querySelector(".weather-temperature");
   let weatherCity = document.querySelector(".weather-city p");
   let weatherDescription = document.querySelector(".weather-description p");
+  let weatherIcon = document.querySelector(".weather-icon");
+  let weatherUnits = document.querySelector(".units");
 
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(position => {
@@ -27,23 +29,28 @@ window.addEventListener("load", () => {
           const cityName = data.name;
           const description = data.weather[0].description;
           const kelvinTemp = data.main.temp;
+          const icon = data.weather[0].icon;
           console.log("kelvinTemp ", kelvinTemp);
 
-          let unitOfMeasurement = "Fahrenheit";
+          let unitOfMeasurement = "";
           weatherCity.innerHTML = cityName;
           weatherDescription.innerHTML = description;
+          weatherIcon.innerHTML = `<img src="assets/css/icons/${icon}.png"/>`;
 
           function KtoF(kelvinTemp) {
-            unitOfMeasurement = "Celsius";
+            unitOfMeasurement = "Fahrenheit";
+            weatherUnits.innerHTML = unitOfMeasurement;
             return Math.floor(((kelvinTemp - 273) * 9) / 5 + 32);
           }
 
           function KtoC(kelvinTemp) {
-            unitOfMeasurement = "Fahrenheit";
+            unitOfMeasurement = "Celsius";
+            weatherUnits.innerHTML = unitOfMeasurement;
             return Math.floor(kelvinTemp - 273.15);
           }
-
-          weatherTemperature.innerHTML = `${KtoF(kelvinTemp)}x<span>F</span>`;
+          
+          weatherTemperature.innerHTML = `${KtoF(kelvinTemp)}`;
+          weatherUnits.innerHTML = unitOfMeasurement;
 
           console.log(data);
           weatherContainer.addEventListener("click", function() {
@@ -51,14 +58,14 @@ window.addEventListener("load", () => {
 
             if (data.name === undefined) return;
 
-            if (unitOfMeasurement == "Fahrenheit") {
+            if (unitOfMeasurement == "Celsius") {
               weatherTemperature.innerHTML = `${KtoF(
                 kelvinTemp
-              )}<span>F</span>`;
+              )}`;
             } else {
               weatherTemperature.innerHTML = `${KtoC(
                 kelvinTemp
-              )}<span>C</span>`;
+              )}`;
             }
           });
         });
