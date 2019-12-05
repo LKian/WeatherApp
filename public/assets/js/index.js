@@ -1,3 +1,5 @@
+
+
 console.log(
   "What's the point of small talk if you can't talk about the weather?"
 );
@@ -32,19 +34,19 @@ window.addEventListener("load", () => {
           const icon = data.weather[0].icon;
           console.log("kelvinTemp ", kelvinTemp);
 
-          let unitOfMeasurement = "";
+          let unitOfMeasurement ;
           weatherCity.innerHTML = cityName;
           weatherDescription.innerHTML = description;
           weatherIcon.innerHTML = `<img src="assets/css/icons/${icon}.png"/>`;
 
           function KtoF(kelvinTemp) {
-            unitOfMeasurement = "Fahrenheit";
+            unitOfMeasurement = "F";
             weatherUnits.innerHTML = unitOfMeasurement;
             return Math.floor(((kelvinTemp - 273) * 9) / 5 + 32);
           }
 
           function KtoC(kelvinTemp) {
-            unitOfMeasurement = "Celsius";
+            unitOfMeasurement = "C";
             weatherUnits.innerHTML = unitOfMeasurement;
             return Math.floor(kelvinTemp - 273.15);
           }
@@ -58,7 +60,7 @@ window.addEventListener("load", () => {
 
             if (data.name === undefined) return;
 
-            if (unitOfMeasurement == "Celsius") {
+            if (unitOfMeasurement == "C") {
               weatherTemperature.innerHTML = `${KtoF(
                 kelvinTemp
               )}`;

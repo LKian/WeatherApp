@@ -1,38 +1,45 @@
 * {
   box-sizing: border-box;
-  font-family: sans-serif;
+  font-family: Helvetica, sans-serif;
   margin: 0;
   padding: 0;
+  color: #111;
 }
-
 
 .container {
   display: flex;
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  background: green;
+  background: #222;
   height: 100vh;
+  padding: 25px;
+}
+
+.weather-app {
+  width: 400px;
+}
+
+.header-container {
+  border-radius: 5px 5px 0 0;
+  background: #aee;
+  padding: 10px 0;
+  text-align: center;
+}
+
+.header-container .header-title {
+  font-size: 30px;
 }
 
 .weather-info-container {
-  border: 3px solid #fff;
-  border-radius: 5px;
-  padding: 25px;
-  width: 400px;
+  border-radius: 0 0 5px 5px;
   background-color: #fff;
+  padding: 15px 0 25px;
+  text-align: center;
 }
 
 .weather-info-container:hover {
   cursor: pointer;
-}
-
-.header-container .header-title {
-  text-align: center;
-}
-
-.weather-info-container {
-  text-align: center;
 }
 
 .weather-description,
@@ -42,10 +49,23 @@
 
 .weather-temperature-container {
   display: flex;
-  align-items: center;
+  align-items: flex-end;
   justify-content: center;
+  padding-bottom: 15px;
 }
 
-.weather-temperature-container span {
+.weather-temperature-container .weather-temperature,
+.weather-temperature-container h2 {
+  font-size: 50px;
+}
+
+.weather-description {
+  padding-bottom: 15px;
+  font-size: 25px;
+}
+
+.units {
+  font-size: 30px;
   margin-left: 10px;
+  margin-bottom: 5px;
 }
