@@ -1,11 +1,8 @@
-console.log(
-  "What's the point of small talk if you can't talk about the weather?"
-);
+console.log("What's small talk without weather?");
 
 window.addEventListener("load", () => {
   const apiKey = "1ae8c9811bb69f7be6fcc44e1975262c";
-  let long;
-  let lat;
+  let long, lat;
   let weatherContainer = document.querySelector(".weather-info-container");
   let weatherTemperature = document.querySelector(".weather-temperature");
   let weatherCity = document.querySelector(".weather-city p");
@@ -25,12 +22,12 @@ window.addEventListener("load", () => {
         })
 
         .then(data => {
-          // console.log(data);
           const cityName = data.name;
+          const countryName = data.sys.country;
           const description = data.weather[0].description;
           const kelvinTemp = data.main.temp;
           const icon = data.weather[0].icon;
-          console.log("kelvinTemp ", kelvinTemp);
+          console.log("City: " + cityName + ", " + countryName);
 
           let unitOfMeasurement;
           weatherCity.innerHTML = cityName;
@@ -52,16 +49,21 @@ window.addEventListener("load", () => {
           weatherTemperature.innerHTML = `${KtoF(kelvinTemp)}`;
           weatherUnits.innerHTML = unitOfMeasurement;
 
-          console.log(data);
           weatherContainer.addEventListener("click", function() {
             if (data.name === undefined) return;
 
             if (unitOfMeasurement == "C") {
               weatherTemperature.innerHTML = `${KtoF(kelvinTemp)}`;
-              console.log("unitOfMeasurement ", unitOfMeasurement);
+              console.log(
+                weatherTemperature.innerHTML + "°",
+                unitOfMeasurement
+              );
             } else {
               weatherTemperature.innerHTML = `${KtoC(kelvinTemp)}`;
-              console.log("unitOfMeasurement ", unitOfMeasurement);
+              console.log(
+                weatherTemperature.innerHTML + "°",
+                unitOfMeasurement
+              );
             }
           });
         });
