@@ -1,5 +1,3 @@
-
-
 console.log(
   "What's the point of small talk if you can't talk about the weather?"
 );
@@ -34,7 +32,7 @@ window.addEventListener("load", () => {
           const icon = data.weather[0].icon;
           console.log("kelvinTemp ", kelvinTemp);
 
-          let unitOfMeasurement ;
+          let unitOfMeasurement;
           weatherCity.innerHTML = cityName;
           weatherDescription.innerHTML = description;
           weatherIcon.innerHTML = `<img src="assets/css/icons/${icon}.png"/>`;
@@ -50,24 +48,20 @@ window.addEventListener("load", () => {
             weatherUnits.innerHTML = unitOfMeasurement;
             return Math.floor(kelvinTemp - 273.15);
           }
-          
+
           weatherTemperature.innerHTML = `${KtoF(kelvinTemp)}`;
           weatherUnits.innerHTML = unitOfMeasurement;
 
           console.log(data);
           weatherContainer.addEventListener("click", function() {
-            console.log("unitOfMeasurement ", unitOfMeasurement);
-
             if (data.name === undefined) return;
 
             if (unitOfMeasurement == "C") {
-              weatherTemperature.innerHTML = `${KtoF(
-                kelvinTemp
-              )}`;
+              weatherTemperature.innerHTML = `${KtoF(kelvinTemp)}`;
+              console.log("unitOfMeasurement ", unitOfMeasurement);
             } else {
-              weatherTemperature.innerHTML = `${KtoC(
-                kelvinTemp
-              )}`;
+              weatherTemperature.innerHTML = `${KtoC(kelvinTemp)}`;
+              console.log("unitOfMeasurement ", unitOfMeasurement);
             }
           });
         });
